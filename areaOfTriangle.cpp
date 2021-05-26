@@ -9,19 +9,9 @@
 
 void CalculateArea(float base, float height) {
     // calculate area
-
-    // variables
     float area = 0.5 * base * height;
-
-    // process & output
-    if (base <= 0 || height <= 0) {
-        std::cout << "\nInvalid Input. Try Again" << std::endl;
-        std::cout << "Done." << std::endl;
-    } else {
-        std::cout << "\nThe area is " << area << " units²" << std::endl;
-        std::cout << "Done." << std::endl;
+    std::cout << "\nThe area is " << area << " units²\nDone." << std::endl;
     }
-}
 
 int main() {
     // this function calls another function
@@ -31,7 +21,6 @@ int main() {
     std::string heightInput;
     float base;
     float height;
-    float area = 0.5 * base * height;
 
     // input
     std::cout << "Enter the dimension of the base: ";
@@ -41,9 +30,12 @@ int main() {
     try {
         base = std::stof(baseInput);
         height = std::stof(heightInput);
-        CalculateArea(base, height);  // call function
+        if (base <= 0 || height <= 0) {
+            std::cout << "\nInvalid Input. Try Again\nDone." << std::endl;
+        } else {
+            CalculateArea(base, height);  // call function
+        }
     } catch (std::invalid_argument) {
-        std::cout << "\nInvalid Input. Try Again" << std::endl;
-        std::cout << "Done." << std::endl;
+        std::cout << "\nInvalid Input. Try Again\nDone." << std::endl;
     }
 }
